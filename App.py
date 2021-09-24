@@ -1,6 +1,6 @@
 from flask_mysqldb import MySQL
-from Services.searchProduct import searchProduct,searchProductDetail
-from Access_to_Data.connection import connection,run,app
+from searchProduct import searchProduct,searchProductDetail
+from connection import connection,run,app
 
 
 connection()
