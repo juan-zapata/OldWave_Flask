@@ -1,5 +1,5 @@
 from flask_mysqldb import MySQL
-from searchProduct import searchProduct,searchProductDetail
+from Services.searchProduct import searchProduct,searchProductDetail
 from flask import Flask
 from flask_mysqldb import MySQL
 
