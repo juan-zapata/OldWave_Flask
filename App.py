@@ -5,10 +5,10 @@ import os
 
 
 app = Flask(__name__)
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'tupassword'
-app.config['MYSQL_DB'] = 'proyectooldwave'
+app.config['MYSQL_HOST'] = 'ec2-3-230-61-252.compute-1.amazonaws.com'
+app.config['MYSQL_USER'] = 'szxpnbcliklxcj'
+app.config['MYSQL_PASSWORD'] = 'ae19b5889e0bd56555dc4f0591b4dda5a32a06373b94254c48767877b4a059e1'
+app.config['MYSQL_DB'] = 'dff7c0j37lg18'
 mysql = MySQL(app)
 
 # settings
