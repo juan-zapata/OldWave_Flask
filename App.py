@@ -18,7 +18,7 @@ app.secret_key = 'mysecretkey'
 def search():
     cur= mysql.connection.cursor()
     query = request.args.get('q')
-    cur.execute('SELECT i.id, i.name, i.brand, i.thumbnail, c.id as cityId, c.name as cityName, i.price, i.raiting, s.id as sellerId, s.name as sellerName, s.logo FROM item i INNER JOIN city c ON i.city = c.id INNER JOIN seller s ON i.seller = s.id WHERE i.name LIKE %s',["%"+query+"%"])
+    cur.execute('SELECT i.id, i.name, i.brand, i.thumbnail, c.id as cityId, c.name as cityName, i.price, i.rating, s.id as sellerId, s.name as sellerName, s.logo FROM item i INNER JOIN city c ON i.city = c.id INNER JOIN seller s ON i.seller = s.id WHERE i.name LIKE %s',["%"+query+"%"])
     rv = cur.fetchall()
     json_data=[]
     contentItem = {}
@@ -35,7 +35,7 @@ def search():
 @app.route('/api/item/<id>',methods=['GET'])
 def detalle(id):
     cur= mysql.connection.cursor()
-    cur.execute('SELECT i.id, i.name, i.brand, p.url, c.id as cityId, c.name as cityName, i.price, i.raiting, i.description, s.id as sellerId, s.name as sellerName, s.logo FROM item i INNER JOIN city c ON i.city = c.id INNER JOIN seller s ON i.seller = s.id INNER JOIN picture p ON i.id = p.item WHERE i.id=%s', (id))
+    cur.execute('SELECT i.id, i.name, i.brand, p.url, c.id as cityId, c.name as cityName, i.price, i.rating, i.description, s.id as sellerId, s.name as sellerName, s.logo FROM item i INNER JOIN city c ON i.city = c.id INNER JOIN seller s ON i.seller = s.id INNER JOIN picture p ON i.id = p.item WHERE i.id=%s', (id))
     rv = cur.fetchall()
     json_data=[]
     contentItem = {}
