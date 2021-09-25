@@ -16,13 +16,13 @@ def searchProduct(mysql):
         json_data2=[]
         content = {'query': query, 'total': len(rv), 'items': json_data, 'seller': {'id': result[8], 'name': result[9], 'logo': result[10]}}
         json_data2.append(content)
-        return  jsonify(dict(json_data2))
+        return jsonify(json_data2[0])
     except:
         contentItem = {'id': 0, 'name': " ", 'brand': " ",'thumbnail': " ", 'city': {'id':0, 'name':" "}, 'price': 0.0, 'rating': 0.0}
         json_data.append(contentItem)
         content = {'query': query, 'total': 0, 'items': json_data, 'seller': {'id':0, 'name': " ", 'logo': " "}}
-        dict(json_data2.append(content))
-        return  jsonify(json_data2)
+        json_data2.append(content)
+        return  jsonify(json_data2[0])
 
 
 def searchProductDetail(id,mysql):
@@ -37,13 +37,13 @@ def searchProductDetail(id,mysql):
             picture.append(result[3])
         contentItem = {'id': result[0], 'name': result[1], 'brand': result[2],'pictures': picture, 'city': {'id':result[4], 'name':result[5]}, 'price': result[6], 'rating':result[7],'description':result[8],'seller': {'id': result[9], 'name': result[10], 'logo': result[11]}}
         json_data.append(contentItem)
-        return jsonify(dict(json_data))
+        return jsonify(json_data[0])
     except:
+        json_data=[]
+        contentItem = {'id': 0, 'name': " ", 'brand': " ",'pictures': [ ], 'city': {'id':0, 'name':" "}, 'price': 0.0, 'rating':0.0,'description':" ",'seller': {'id': 0, 'name':" ", 'logo': " "}}
+        json_data.append(contentItem)
+        return jsonify(json_data[0])
 
-        SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-        json_url = os.path.join(SITE_ROOT, "jsonDetalle.json")
-        data = json.load(open(json_url))
-        return jsonify(data)
 
 
 
