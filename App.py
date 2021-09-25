@@ -7,10 +7,10 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 
 
-app.config['MYSQL_HOST'] = 'nnsgluut5mye50or.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'
-app.config['MYSQL_USER'] = 'lgab4tkno4x6egda'
-app.config['MYSQL_PASSWORD'] = 'owxq5zm80co70gcm'
-app.config['MYSQL_DB'] = 'zx7ecatofxxbvaz3'
+app.config['MYSQL_HOST'] = 'database-1.cztqwnr3tkxs.us-west-1.rds.amazonaws.com'
+app.config['MYSQL_USER'] = 'admin'
+app.config['MYSQL_PASSWORD'] = 'root1234'
+app.config['MYSQL_DB'] = 'flaskdb'
     
 # settings
 app.secret_key = 'mysecretkey'
@@ -28,4 +28,4 @@ def detalle(id):
     return searchProductDetail(id,mysql)
 
 if __name__ == '__main__':   
-    app.run(port = 8008, debug = True)
+    app.run(port = 8080, debug = True)
