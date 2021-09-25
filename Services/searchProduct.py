@@ -1,4 +1,6 @@
-from flask import Flask, request,jsonify
+import os
+from flask import Flask, request,jsonify, render_template, url_for, json
+
 def searchProduct(mysql): 
     cur= mysql.connection.cursor()
     query = request.args.get('q')
@@ -37,6 +39,11 @@ def searchProductDetail(id,mysql):
         json_data.append(contentItem)
         return jsonify(json_data)
     except:
-        contentItem = {'id': 0, 'name': " ", 'brand': " ",'pictures': " ", 'city': {'id':0, 'name':" "}, 'price': 0.0, 'rating':0.0,'description':" ",'seller': {'id': 0, 'name': " ", 'logo': " "}}
-        json_data.append(contentItem)
-        return jsonify(json_data)
+
+        SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+        json_url = os.path.join(SITE_ROOT, "jsonDetalle.json")
+        data = json.load(open(json_url))
+        return jsonify(data)
+
+
+
