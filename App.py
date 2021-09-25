@@ -1,3 +1,4 @@
+
 from flask_mysqldb import MySQL
 from Services.searchProduct import searchProduct,searchProductDetail
 from flask import Flask
@@ -28,5 +29,3 @@ def detalle(id):
 
 if __name__ == '__main__':   
     app.run(port = 8008, debug = True)
-
-    
