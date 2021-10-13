@@ -3,8 +3,12 @@ from flask_mysqldb import MySQL
 from Services.searchProduct import searchProduct,searchProductDetail
 from flask import Flask
 from flask_mysqldb import MySQL
+from flask_cors import CORS, cross_origin
+
 
 app = Flask(__name__)
+app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app)
 
 
 app.config['MYSQL_HOST'] = 'database-1.cztqwnr3tkxs.us-west-1.rds.amazonaws.com'
@@ -18,11 +22,13 @@ app.secret_key = 'mysecretkey'
 mysql = MySQL(app)
 
 @app.route('/api/search', methods=['GET'])
+@cross_origin()
 
 def search():
     return searchProduct(mysql)
 
 @app.route('/api/item/<id>',methods=['GET'])
+@cross_origin()
 
 def detalle(id):
     return searchProductDetail(id,mysql)
