@@ -19,3 +19,4 @@ mysqlclient==2.0.3
 python-decouple==3.4
 Werkzeug==2.0.1
 Flask-Cors==3.0.10
+flask-unittest==0.1.2
