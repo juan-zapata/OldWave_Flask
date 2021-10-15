@@ -30,7 +30,7 @@ class BasicTests(unittest.TestCase):
     def success(self):
         print("gkjh")
         response = self.app.get('/api/search?q=cam', follow_redirects=True)
-        assert test_helpers.response_success(response,response.status_code)
+        test_helpers.response_success(response,response.status_code)
 
 if __name__ == "__main__":
     unittest.main()
